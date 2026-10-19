@@ -182,7 +182,7 @@ img.fig{max-width:100%;display:block;margin:0 auto;mix-blend-mode:multiply;}
     <div class="vflow"><span class="chip card--pink">01 · Evaluate</span><h3 class="obj">How well does the current protocol perform?</h3>
       <div class="box"><span><b>19 criteria</b> on the runsheet</span></div><div class="varr">↓</div><div class="box"><span><b>18</b> rebuilt from recorded variables</span></div><div class="varr">↓</div><div class="box tint card--pink"><span>Any criterion present → <b>high risk</b></span></div></div>
     <div class="vflow"><span class="chip card--lilac">02 · Build</span><h3 class="obj">A better checklist for paramedics</h3>
-      <div class="box"><span><b>LASSO</b>: recorded variables → <b>83 predictors</b></span></div><div class="varr">↓</div><div class="box"><span>Clinical review</span></div><div class="varr">↓</div><div class="box tint card--lilac"><span><b>13 items</b>, refit as a logistic regression</span></div></div>
+      <div class="box"><span><b>LASSO</b>: recorded variables → <b>83 predictors</b></span></div><div class="varr">↓</div><div class="box"><span>Clinical review</span></div><div class="varr">↓</div><div class="box tint card--lilac"><span><b>10 items</b>, refit as a logistic regression</span></div></div>
     <div class="vflow"><span class="chip card--sage">03 · Benchmark</span><h3 class="obj">A ceiling for decision support</h3>
       <div class="box"><span><b>XGBoost</b>: gradient-boosted decision trees</span></div><div class="varr">↓</div><div class="box"><span>The same 83 predictors</span></div><div class="varr">↓</div><div class="box tint card--sage"><span>Does a flexible model do better?</span></div></div>
   </div>
@@ -214,24 +214,23 @@ img.fig{max-width:100%;display:block;margin:0 auto;mix-blend-mode:multiply;}
   <table class="rt" style="width:1240px;">
     <thead><tr><th></th><th>Current protocol</th><th><span class="chip card--lilac">Checklist</span></th><th>XGBoost</th></tr></thead>
     <tbody>
-      <tr><td>Refusals flagged</td><td>75.8%</td><td class="hi">46.3%</td><td>40.0%</td></tr>
-      <tr><td>Sensitivity</td><td>77.7%</td><td class="hi">83.7%</td><td>80.5%</td></tr>
-      <tr><td>Specificity</td><td>24.4%</td><td class="hi">56.4%</td><td>62.8%</td></tr>
-      <tr><td>Positive predictive value</td><td>6.7%</td><td class="hi">11.8%</td><td>13.0%</td></tr>
+      <tr><td>Refusals flagged</td><td>75.8%</td><td class="hi">48.1%</td><td>40.0%</td></tr>
+      <tr><td>Sensitivity</td><td>77.7%</td><td class="hi">85.3%</td><td>80.5%</td></tr>
+      <tr><td>Specificity</td><td>24.4%</td><td class="hi">54.5%</td><td>62.8%</td></tr>
+      <tr><td>Positive predictive value</td><td>6.7%</td><td class="hi">11.5%</td><td>13.0%</td></tr>
       <tr><td>AUROC</td><td>0.619</td><td class="hi">0.758</td><td>0.783</td></tr>
     </tbody>
   </table>
-  <div class="card" style="padding:18px 40px;max-width:1240px;"><p class="body" style="text-align:center;">For every 1,000 refusals, the checklist triggered about <b>300 fewer calls</b> to clinical support and missed about <b>4 fewer patients</b> who were hospitalized or died.</p></div>
+  <div class="card" style="padding:18px 40px;max-width:1240px;"><p class="body" style="text-align:center;">For every 1,000 refusals, the checklist triggered about <b>280 fewer calls</b> to clinical support and missed about <b>5 fewer patients</b> who were hospitalized or died.</p></div>
 </div></section><section class="slide"><p class="eyebrow">Results</p><p class="pagedot"></p>
 <div class="layout-hero" style="gap:30px;">
-  <div class="tb"><div style="max-width:1400px;margin:0 auto;"><h1 class="headline">The 13-item checklist</h1><p class="lead">Odds ratios from the refit logistic regression.</p></div></div>
+  <div class="tb"><div style="max-width:1400px;margin:0 auto;"><h1 class="headline">The 10-item checklist</h1><p class="lead">Odds ratios from the refit logistic regression.</p></div></div>
   <div class="bcard cl"><div class="cols">
-    <div><h4 class="first" style="margin-top:0;">Vital signs measured on scene</h4><div class="row"><span>Tachycardia · heart rate &gt; 100/min</span><span class="or">1.81</span></div><div class="row"><span>Tachypnea · respiratory rate &gt; 22/min</span><span class="or">1.51</span></div><div class="row"><span>Hypoxia · SpO₂ &lt; 94%</span><span class="or">1.88</span></div><div class="row"><span>Hypertension · systolic BP &gt; 180 mm Hg<span class=dag>†</span></span><span class="or">0.71</span></div>
-         <h4>Patient background</h4><div class="row"><span>Older age · per 10 years</span><span class="or">1.39</span></div><div class="row"><span>Medical history or current medication</span><span class="or">2.24</span></div><div class="row"><span>Alcohol or drug intoxication<span class=dag>†</span></span><span class="or">0.53</span></div></div>
-    <div><h4 class="first" style="margin-top:0;">Presenting complaint at dispatch</h4><div class="row"><span>Unconscious or fainting<span class=dag>†</span></span><span class="or">0.79</span></div><div class="row"><span>Breathing difficulty</span><span class="or">1.35</span></div><div class="row"><span>Cardiac problem or implanted defibrillator<span class=dag>†</span></span><span class="or">0.63</span></div><div class="row"><span>Signs of stroke or transient ischemic attack</span><span class="or">1.44</span></div><div class="row"><span>Psychiatric presentation or suicide attempt</span><span class="or">1.63</span></div>
-         <h4>General appearance</h4><div class="row"><span>Abnormal general appearance or skin colour</span><span class="or">1.33</span></div></div>
+    <div><h4 class="first" style="margin-top:0;">Vital signs measured on scene</h4><div class="row"><span>Tachycardia · heart rate &gt; 100/min</span><span class="or">1.76</span></div><div class="row"><span>Tachypnea · respiratory rate &gt; 22/min</span><span class="or">1.52</span></div><div class="row"><span>Hypoxia · SpO₂ &lt; 94%</span><span class="or">1.95</span></div>
+         <h4>Patient background</h4><div class="row"><span>Older age · per 10 years</span><span class="or">1.39</span></div><div class="row"><span>Male sex</span><span class="or">1.36</span></div><div class="row"><span>Medical history or current medication</span><span class="or">2.25</span></div></div>
+    <div><h4 class="first" style="margin-top:0;">Presenting complaint at dispatch</h4><div class="row"><span>Breathing difficulty</span><span class="or">1.41</span></div><div class="row"><span>Signs of stroke or transient ischemic attack</span><span class="or">1.46</span></div><div class="row"><span>Psychiatric presentation or suicide attempt</span><span class="or">1.65</span></div>
+         <h4>General appearance</h4><div class="row"><span>Abnormal general appearance or skin colour</span><span class="or">1.35</span></div></div>
   </div></div>
-  <p class="body-sm"><span class="dag" style="margin-left:0;">†</span>&nbsp; Kept on clinical grounds despite an odds ratio below 1: signs that are dangerous to miss.</p>
 </div></section><section class="slide"><p class="eyebrow">Discussion</p><p class="pagedot"></p>
 <div class="layout-hero" style="gap:30px;">
   <div class="tb"><div style="max-width:1400px;margin:0 auto;"><h1 class="headline">Limitations</h1><p class="lead">What the data can and cannot see</p></div></div>
@@ -252,7 +251,7 @@ img.fig{max-width:100%;display:block;margin:0 auto;mix-blend-mode:multiply;}
       <div class="tnode focus" style="margin-left:120px;"><span class="k">Studied · 54%</span>Linked: 94,825 refusals</div>
     </div>
     <div class="notes">
-      <p><b>Patients who refused transport are a selected group.</b> Danger signs that usually lead to transport are rare among them. This does not mean the signs are safe.</p>
+      <p><b>Patients who refused transport are a selected group.</b> Danger signs that usually lead to transport are rare among them. This does not mean the signs are safe. Four such signs had odds ratios below 1 and were left out of the checklist.</p>
       <p><b>Patients who changed their mind were recorded as transports.</b> The protocol's true performance may be better than reported.</p>
       <p><b>Half of refusals could not be linked.</b> Patients who could not give a health insurance number may be the ones at higher risk.</p>
     </div>
@@ -262,7 +261,7 @@ img.fig{max-width:100%;display:block;margin:0 auto;mix-blend-mode:multiply;}
   <div class="tb"><div style="max-width:1400px;margin:0 auto;"><h1 class="headline">Three takeaways</h1></div></div>
   <div class="lines">
     <p style="display:flex;align-items:center;gap:30px;text-align:left;"><span class="chip card--pink" style="flex:none;">01</span><span>Under the current protocol, most refusals triggered a call to clinical support. Some patients who were later hospitalized or died were still missed.</span></p>
-    <p style="display:flex;align-items:center;gap:30px;text-align:left;"><span class="chip card--lilac" style="flex:none;">02</span><span>A 13-item checklist did better on both counts. For every 1,000 refusals: about 300 fewer calls and about 4 fewer missed patients.</span></p>
+    <p style="display:flex;align-items:center;gap:30px;text-align:left;"><span class="chip card--lilac" style="flex:none;">02</span><span>A 10-item checklist did better on both counts. For every 1,000 refusals: about 280 fewer calls and about 5 fewer missed patients.</span></p>
     <p style="display:flex;align-items:center;gap:30px;text-align:left;"><span class="chip card--sage" style="flex:none;">03</span><span>The checklist is not ready for use yet. It still needs review by clinical experts and testing in the field.</span></p>
   </div>
 </div>
